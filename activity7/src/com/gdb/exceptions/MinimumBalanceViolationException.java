@@ -1,3 +1,5 @@
+package com.gdb.exceptions;
+
 /**
 * Thrown when withdrawal would violate minimum balance requirement.
 */

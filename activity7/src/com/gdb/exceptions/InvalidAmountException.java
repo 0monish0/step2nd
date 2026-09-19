@@ -1,3 +1,5 @@
+package com.gdb.exceptions;
+
 /**
 * Thrown when an invalid amount is provided (negative or zero).
 */

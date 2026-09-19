@@ -1,3 +1,5 @@
+package com.gdb.exceptions;
+
 /**
 * Thrown when operation is attempted on an inactive account.
 */

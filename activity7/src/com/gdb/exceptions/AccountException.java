@@ -1,3 +1,5 @@
+package com.gdb.exceptions;
+
 /**
 * Base exception for all account-related errors.
 */

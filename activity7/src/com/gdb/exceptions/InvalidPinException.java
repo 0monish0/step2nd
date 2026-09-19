@@ -1,3 +1,5 @@
+package com.gdb.exceptions;
+
 /**
 * Thrown when PIN is incorrect or not set.
 */
