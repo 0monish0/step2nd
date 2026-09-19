@@ -1,9 +1,7 @@
 package com.gdb.domain;
-
 import com.gdb.exceptions.*;
-
 public abstract class Account{
-	//const
+	// ===== Constants =====
 	private static final int MIN_AGE = 18;
 	private static final int MIN_PIN = 1000;
 	private static final int MAX_PIN = 9999;
@@ -21,25 +19,28 @@ public abstract class Account{
 	public abstract String getAccountType();
 
 	// ===== Constructor =====
-	public Account(int accountNumber, String name, int age,double initialBalance)
-	throws IllegalArgumentException {// Validate age
-	if (age < MIN_AGE) {
-	throw new IllegalArgumentException("Customer must be at least " + MIN_AGE + " years old. Provided: " + age);
+	public Account(int accountNumber, String name, int age,double initialBalance) throws IllegalArgumentException{
+
+		if(age<MIN_AGE){
+			throw new IllegalArgumentException("Customer must be at least "+MIN_AGE+". Provided: "+age);
+		}
+		//minbal
+		double minBal=getMinimumBalance();
+		if(initialBalance <minBal){
+			throw new IllegalArgumentException(getAccountType + " Accounts require minium balance of:"+minBal);
+		}
+
+		//initialize fields
+		this.accountNumber=accountNumber;
+		this.name=name;
+		this.age=age;
+		this.balance=initialBalance;
+		this.status="Active";
+		this.pin=null;
 	}
-	// Validate minimum balance (delegated to subclass)
-	double minBalance = getMinimumBalance();
-	if (initialBalance < minBalance) {
-	throw new IllegalArgumentException(	getAccountType() + " account requires minimum balance of ₹" + minBalance +". Provided: ₹" + initialBalance);
-	}
-	// Initialize fields
-	this.accountNumber = accountNumber;
-	this.name = name;
-	this.age = age;
-	this.balance = initialBalance;
-	this.status = "Active";
-	this.pin = null;
-	}
-	// ===== Business Methods =====
+
+	
+		// ===== Business Methods =====
 	public void deposit(double amount) throws InvalidAmountException, InactiveAccountException {
 	// TODO: Check if account is active
 	// TODO: Check if amount is positive
@@ -203,6 +204,7 @@ public abstract class Account{
     public void setAge(int age){
         this.age=age;
     }
-	
-
+        public static void main(String[] args){
+    }
+}
 }
